@@ -2,10 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Profile, Experience, Education
+from .models import Profile
 from .forms import EducationForm, ExperienceForm
 
 
@@ -17,10 +16,12 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def profile_index(request):
     profile = Profile.objects.filter(user=request.user)
     return render(request, 'main_app/profile_index.html', {'profile': profile})
 
+@login_required
 def profile_info(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
     experience_form = ExperienceForm()
@@ -31,6 +32,7 @@ def profile_info(request, profile_id):
         'education_form': education_form
     })
 
+@login_required
 def add_education(request, profile_id):
     form = EducationForm(request.POST)
     if form.is_valid():
@@ -39,6 +41,7 @@ def add_education(request, profile_id):
         new_education.save()
     return redirect('profile_info', profile_id=profile_id)
 
+@login_required
 def add_experience(request, profile_id):
     form = ExperienceForm(request.POST)
     if form.is_valid():

@@ -8,12 +8,12 @@
 <h1 class="p-2 text-center">Profiles</h1>
 
 <div class="container">
-    {% for profile in profiles %}
+    {% for profile in profile %}
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">first last name</h4>
-            <p class="card-text">position</p>
-            <p class="card-text">location</p>
+            <h4 class="card-title"> {{ profile.first_name }} {{ profile.last_name }} </h4>
+            <p class="card-text">{{ profile.position }}</p>
+            <p class="card-text">{{ profile.location }}</p>
             <a href="{% url 'profile_info' profile.id %}" class="button btn-primary">View</a>
         </div>
     </div>

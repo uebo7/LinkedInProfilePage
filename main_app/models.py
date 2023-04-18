@@ -29,8 +29,7 @@ class Education(models.Model):
     def __str__(self):
         return f'I studied at {self.school} to learn {self.skills}'
 
-    class Meta: 
-        ordering = ['-date']
+
 
 class Experience(models.Model):
     company = models.CharField(max_length=100)
@@ -43,5 +42,4 @@ class Experience(models.Model):
     def __str__(self):
         return f'I worked at {self.company} for {self.years} years'
        
-    class Meta: 
-        ordering = ['-date']
+   

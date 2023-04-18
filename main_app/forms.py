@@ -4,7 +4,7 @@ from .models import Experience, Education
 class ExperienceForm(ModelForm):
     class Meta:
         model = Experience
-        fields = ['company', 'years', 'career', 'about']
+        fields = ['company', 'years', 'Career', 'about']
 
 class EducationForm(ModelForm):
     class Meta:
