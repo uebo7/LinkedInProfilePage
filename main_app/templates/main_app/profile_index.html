@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>View Profile</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="p-2 text-center">Profiles</h1>
+
+<div class="container">
+    {% for profile in profiles %}
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">first last name</h4>
+            <p class="card-text">position</p>
+            <p class="card-text">location</p>
+            <a href="{% url 'profile_info' profile.id %}" class="button btn-primary">View</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

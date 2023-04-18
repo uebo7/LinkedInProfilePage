@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% if object %}
+<title>Update Profile</title>
+{% else %}
+<title>Create Profile</title>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if object %}
+<h1 class="p-2 text-center">Update Profile</h1>
+{% else %}
+<h1 class="p-2 text-center">Create Profile</h1>
+{% endif %}
+
+<div class="row">
+    <div class="mx-auto col-10 col-md-8 col-lg-6">
+        <form method="POST">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    {% csrf_token %}
+                    <table class="table">
+                        {{ form.as_table }}
+                    </table>
+                    <input type="submit" class="btn btn-primary justify-content-center" value="Submit">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
