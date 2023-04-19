@@ -34,12 +34,15 @@
                         <a class="nav-link active link-info" aria-current="page" href="{% url 'about' %}">About</a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link active link-info" aria-current="page" href="{% url 'profile_index' %}">Profile</a>
-                    </li>
+                    {% if user.profile_set.count == 0 %}
                     <li class="nav-item">
                         <a class="nav-link active link-info" aria-current="page" href="{% url 'create_profile' %}">Create Profile</a>
                     </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active link-info" aria-current="page" href="{% url 'profile_index' %}">Profile</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link active link-info" aria-current="page" href="{% url 'logout' %}">Logout</a>
                     </li>

@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Profile
+from .models import Profile, Experience, Education
 from .forms import EducationForm, ExperienceForm
 
 
@@ -19,36 +19,34 @@ def about(request):
 @login_required
 def profile_index(request):
     profile = Profile.objects.filter(user=request.user)
-    return render(request, 'main_app/profile_index.html', {'profile': profile})
+    return render(request, 'main_app/profile_index.html', {
+        'profile': profile,
+    })
 
 @login_required
 def profile_info(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
-    experience_form = ExperienceForm()
-    education_form = EducationForm()
+    experiences = Experience.objects.filter(profile=profile)
+    educations = Education.objects.filter(profile=profile)
     return render(request, 'main_app/profile_info.html', {
         'profile': profile,
-        'experience_form': experience_form,
-        'education_form': education_form
+        'experiences': experiences,
+        'educations': educations,
     })
 
 @login_required
-def add_education(request, profile_id):
-    form = EducationForm(request.POST)
-    if form.is_valid():
-        new_education = form.save(commit=False)
-        new_education.profile_id = profile_id
-        new_education.save()
-    return redirect('profile_info', profile_id=profile_id)
+def education_info(request, education_id):
+    education = Education.objects.get(id=education_id)
+    return render(request, 'Education/education_info.html', {
+        'education': education,
+    })
 
 @login_required
-def add_experience(request, profile_id):
-    form = ExperienceForm(request.POST)
-    if form.is_valid():
-        new_experience = form.save(commit=False)
-        new_experience.profile_id = profile_id
-        new_experience.save()
-    return redirect('profile_info', profile_id=profile_id)
+def experience_info(request, experience_id):
+    experience = Experience.objects.get(id=experience_id)
+    return render(request, 'Experience/experience_info.html', {
+        'experience': experience,
+    })
 
 def signup(request):
     error = ''
@@ -65,7 +63,7 @@ def signup(request):
         'form': form,
         'error': error
     })
-
+#profile
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
     fields = ['first_name', 'last_name', 'location', 'about_me', 'current_position']
@@ -78,11 +76,55 @@ class ProfileCreate(LoginRequiredMixin, CreateView):
 class ProfileDelete(LoginRequiredMixin, DeleteView):
     model = Profile
     template_name = 'main_app/profile_confirm_delete.html'
-    success_url = '/profile/'
+    success_url = '/'
 
 class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = Profile
     fields = ['first_name', 'last_name', 'location', 'about_me', 'current_position']
     template_name = 'main_app/profile_form.html'
+
+#Experience
+class ExperienceCreate(LoginRequiredMixin, CreateView):
+    model = Experience
+    fields = ['company', 'years', 'Career', 'about']
+    template_name = 'Experience/experience_form.html'
+
+    def form_valid(self, form):
+        print(self.kwargs.get('profile_id'))
+        profile = Profile.objects.get(pk=self.kwargs.get('profile_id'))
+        form.instance.profile = profile
+        return super().form_valid(form)
+
+class ExperienceDelete(LoginRequiredMixin, DeleteView):
+    model = Experience
+    template_name = 'Experience/experience_confirm_delete.html'
+    success_url = '/profile/'
+
+class ExperienceUpdate(LoginRequiredMixin, UpdateView):
+    model = Experience
+    fields = ['company', 'years', 'Career', 'about']
+    template_name = 'Experience/experience_form.html'
+    
+#Education
+class EducationCreate(LoginRequiredMixin, CreateView):
+    model = Education
+    fields = ['school', 'degree', 'about', 'skills']
+    template_name = 'Education/education_form.html'
+
+    def form_valid(self, form):
+        print(self.kwargs.get('profile_id'))
+        profile = Profile.objects.get(pk=self.kwargs.get('profile_id'))
+        form.instance.profile = profile
+        return super().form_valid(form)
+
+class EducationDelete(LoginRequiredMixin, DeleteView):
+    model = Education
+    template_name = 'Education/education_confirm_delete.html'
+    success_url = '/profile/'
+
+class EducationUpdate(LoginRequiredMixin, UpdateView):
+    model = Education
+    fields = ['school', 'degree', 'about', 'skills']
+    template_name = 'Education/education_form.html'
 
 

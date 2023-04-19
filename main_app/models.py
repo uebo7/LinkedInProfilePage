@@ -29,7 +29,8 @@ class Education(models.Model):
     def __str__(self):
         return f'I studied at {self.school} to learn {self.skills}'
 
-
+    def get_absolute_url(self):
+        return reverse('education_info', kwargs={'education_id': self.id})
 
 class Experience(models.Model):
     company = models.CharField(max_length=100)
@@ -41,5 +42,8 @@ class Experience(models.Model):
 
     def __str__(self):
         return f'I worked at {self.company} for {self.years} years'
+    
+    def get_absolute_url(self):
+        return reverse('experience_info', kwargs={'experience_id': self.id})
        
    

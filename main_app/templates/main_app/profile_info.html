@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Profile Page</title>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center p-2">Profile Page</h1>
+
+<div class="container">
+    <div class="row p-2 ">
+        <div class="col-6 p-2">
+            <h2>{{ profile.first_name }} {{ profile.last_name}}</h2>
+            <h5> {{ profile.current_position }} </h5>
+            <p> {{ profile.location }} </p>
+        </div>
+    </div>
+    <div class="row p-2 justify-content-center">
+        <div class="col-auto">
+            <h4>{{ profile.about_me }}</h4>
+        </div>
+    </div>
+    <div class="row p-2 justify-content-center">
+        <div class="col-6 p-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-auto"></div>
+                        <h4 class="col-auto">Education</h4>
+                        <a href="{% url 'create_education' profile.id %}" class="btn col-auto">+</a>
+                    </div>
+                    {% for education in educations %}
+                    <div class="row border">
+                        <h4 class="p-2"> {{ education.school }} </h4>
+                        <a href="{% url 'education_info' education.id %}" class="btn d-flex justify-content-center">More Info</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-6 p-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-auto"></div>
+                        <h4 class="col-auto">Experience</h4>
+                        <a href="{% url 'create_experience' profile.id %}" class="btn col-auto">+</a>
+                    </div>
+                    {% for experience in experiences %}
+                    <div class="row border">
+                        <h4 class="p-2"> {{ experience.company }} </h4>                   
+                    {% if experience.years == 1 %}                   
+                        <h4 class="p-2"> {{ experience.years }} Year</h4>
+                        <a href="{% url 'experience_info' experience.id %}" class="btn d-flex justify-content-center">More Info</a>
+                    </div>
+                    {% else %}
+                    <div class="row">
+                        <h4 class="p-2"> {{ experience.years }} Years</h4>
+                        <a href="{% url 'experience_info' experience.id %}" class="btn d-flex justify-content-center">More Info</a>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
