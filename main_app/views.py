@@ -91,7 +91,6 @@ class ExperienceCreate(LoginRequiredMixin, CreateView):
     template_name = 'Experience/experience_form.html'
 
     def form_valid(self, form):
-        print(self.kwargs.get('profile_id'))
         profile = Profile.objects.get(pk=self.kwargs.get('profile_id'))
         form.instance.profile = profile
         return super().form_valid(form)

@@ -9,20 +9,20 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-auto">
+        <div class="col-9 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <h4> {{ education.school }} </h4>
-                    <h5> {{ education.degree }} Year</h5>
-                    <h5>{{ education.skills}} Years</h5>
+                    <h5> {{ education.degree }} </h5>
+                    <h5>{{ education.skills}} </h5>
                     <div class="row p-2">
-                        <p> {{ education.about }} </p>
+                            <p> {{ education.about }} </p>                       
                     </div>
                     <div class="row justify-content-center">
-                        <a href="{% url 'update_education' education.id %}" class="btn btn-primary m-2">Update Profile</a>
+                        <a href="{% url 'update_education' education.id %}" class="btn btn-primary m-2">Update Education</a>
                     </div>
                     <div class="row justify-content-center">
-                        <a href="{% url 'delete_education' education.id %}" class="btn btn-danger m-2">Delete Profile</a>
+                        <a href="{% url 'delete_education' education.id %}" class="btn btn-danger m-2">Remove Education</a>
                     </div>
                 </div>
             </div>

@@ -21,8 +21,8 @@ class Profile(models.Model):
 class Education(models.Model):
     school = models.CharField(max_length=100)
     degree = models.CharField(max_length=100)
-    about = models.CharField(max_length=100)
-    skills = models.CharField(max_length=350)
+    about = models.CharField(max_length=350)
+    skills = models.CharField(max_length=100)
 
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
