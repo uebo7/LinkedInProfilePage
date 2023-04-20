@@ -82,6 +82,7 @@ class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = Profile
     fields = ['first_name', 'last_name', 'location', 'about_me', 'current_position']
     template_name = 'main_app/profile_form.html'
+    success_url = '/profile/'
 
 #Experience
 class ExperienceCreate(LoginRequiredMixin, CreateView):

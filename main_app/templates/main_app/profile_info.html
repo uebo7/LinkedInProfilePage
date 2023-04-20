@@ -32,8 +32,8 @@
                     </div>
                     {% for education in educations %}
                     <div class="row border">
-                        <h4 class="p-2"> {{ education.school }} </h4>
-                        <a href="{% url 'education_info' education.id %}" class="btn d-flex justify-content-center">More Info</a>
+                        <h4 class="p-2 text-center"> {{ education.school }} </h4>
+                        <a href="{% url 'education_info' education.id %}" class="btn btn-primary d-flex justify-content-center">More Info</a>
                     </div>
                     {% endfor %}
                 </div>
@@ -49,15 +49,15 @@
                     </div>
                     {% for experience in experiences %}
                     <div class="row border">
-                        <h4 class="p-2"> {{ experience.company }} </h4>                   
+                        <h4 class="p-2 text-center"> {{ experience.company }} </h4>                   
                     {% if experience.years == 1 %}                   
-                        <h4 class="p-2"> {{ experience.years }} Year</h4>
-                        <a href="{% url 'experience_info' experience.id %}" class="btn d-flex justify-content-center">More Info</a>
+                        <h4 class="p-2 text-center"> {{ experience.years }} Year</h4>
+                        <a href="{% url 'experience_info' experience.id %}" class="btn btn-primary d-flex justify-content-center">More Info</a>
                     </div>
                     {% else %}
                     <div class="row">
-                        <h4 class="p-2"> {{ experience.years }} Years</h4>
-                        <a href="{% url 'experience_info' experience.id %}" class="btn d-flex justify-content-center">More Info</a>
+                        <h4 class="p-2 text-center"> {{ experience.years }} Years</h4>
+                        <a href="{% url 'experience_info' experience.id %}" class="btn btn-primary d-flex justify-content-center">More Info</a>
                     </div>
                     {% endif %}
                     {% endfor %}

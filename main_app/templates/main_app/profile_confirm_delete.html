@@ -12,8 +12,8 @@
         <div class="row justify-content-center">
             <div class="col-2">
                 {% csrf_token %}
-                <input type="submit" value="Yes" class="btn btn-primary">
-                <a href="{% url 'profile_info' object.id %}">No</a>
+                <input type="submit" value="Yes" class="btn btn-primary m-5">
+                <a href="{% url 'profile_index' %}" class="btn btn-danger m-5">No</a>
             </div>
         </div>
     </div>

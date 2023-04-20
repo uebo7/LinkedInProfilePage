@@ -8,17 +8,31 @@
 <h1 class="p-2 text-center">Experience</h1>
 
 <div class="container">
-    <div class="row">
-        <h4> {{ experience.company }} </h4>
-        {% if experience.years == 1 %}
-        <h5> {{ experience.years }} Year</h5>
-        {% else %}
-        <h5>{{ experience.years}} Years</h5>
-        {% endif %}
-        <h4>{{ experience.Career }}</h4>
-    </div>
-    <div class="row">
-        <p> {{ experience.about }} </p>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <h4> {{ experience.company }} </h4>
+                        {% if experience.years == 1 %}
+                        <h5> {{ experience.years }} Year</h5>
+                        {% else %}
+                        <h5>{{ experience.years}} Years</h5>
+                        {% endif %}
+                        <h4>{{ experience.Career }}</h4>
+                    </div>
+                    <div class="row p-2">
+                        <p> {{ experience.about }} </p>
+                    </div>
+                    <div class="row justify-content-center">
+                        <a href="{% url 'update_experience' experience.id %}" class="btn btn-primary m-2">Update Profile</a>
+                    </div>
+                    <div class="row justify-content-center">
+                        <a href="{% url 'delete_experience' experience.id %}" class="btn btn-danger m-2">Delete Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

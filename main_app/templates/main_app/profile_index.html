@@ -9,14 +9,22 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-4">
+        <div class="col-auto">
             {% for profile in profile %}
-            <div class="card" style="height:30rem;">
+            <div class="card">
                 <div class="card-body">
                     <h4 class="card-title" style="margin-bottom: 10%;"> {{ profile.first_name }} {{ profile.last_name }} </h4>
                     <p class="card-text">{{ profile.current_position }}</p>
                     <p class="card-text" style="margin-bottom: 20%;">{{ profile.location }}</p>
-                    <a href="{% url 'profile_info' profile.id %}" class="btn btn-primary">View Profile</a>
+                    <div class="row justify-content-center">
+                        <a href="{% url 'profile_info' profile.id %}" class="btn btn-primary m-2">View Profile</a>
+                    </div>
+                    <div class="row justify-content-center">
+                        <a href="{% url 'update_profile' profile.id %}" class="btn btn-primary m-2">Update Profile</a>
+                    </div>
+                    <div class="row justify-content-center">
+                        <a href="{% url 'delete_profile' profile.id %}" class="btn btn-danger m-2">Delete Profile</a>
+                    </div>
                 </div>
             </div>
             {% endfor %}
