@@ -6,6 +6,22 @@
 
 {% block content %}
 <h1 class="p-2 text-center">Experience</h1>
+
+<div class="container">
+    <div class="row">
+        <h4> {{ experience.company }} </h4>
+        {% if experience.years == 1 %}
+        <h5> {{ experience.years }} Year</h5>
+        {% else %}
+        <h5>{{ experience.years}} Years</h5>
+        {% endif %}
+        <h4>{{ experience.Career }}</h4>
+    </div>
+    <div class="row">
+        <p> {{ experience.about }} </p>
+    </div>
+</div>
+
 {% endblock %}
 
 

@@ -3,3 +3,19 @@
 {% block title %}
 <title>Education</title>
 {% endblock %}
+
+{% block content %}
+<h1 class="text-center p-2">Education</h1>
+
+<div class="container">
+    <div class="row">
+        <h4> {{ education.school }} </h4>
+        <h5> {{ education.degree }} Year</h5>
+        <h5>{{ education.skills}} Years</h5>
+    </div>
+    <div class="row">
+        <p> {{ education.about }} </p>
+    </div>
+</div>
+
+{% endblock %}
