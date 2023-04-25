@@ -14,7 +14,7 @@
 ![Education](/main_app/static/images/Education.png)
 
 # Test It For Yourself
-[LinkedIn Profile](url)
+[LinkedIn Profile](https://linkedinprofile-0425.herokuapp.com/)
 
 # Future Development Ideas
 - Profile Picture
