@@ -30,7 +30,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['linkedinprofile-0425.herokuapp.com']
 
 
 # Application definition
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'linkedInProfile.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'linkedInProfile',
+        'NAME': 'linkedinprofile-0425',
         'USER': os.environ['USER'],
         'PASSWORD': os.environ['PASSWORD']
     }
