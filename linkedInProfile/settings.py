@@ -82,9 +82,11 @@ WSGI_APPLICATION = 'linkedInProfile.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'linkedinprofile-0425',
+        'NAME': 'uebo7/linkedinprofile-0425',
         'USER': os.environ['USER'],
-        'PASSWORD': os.environ['PASSWORD']
+        'PASSWORD': os.environ['PASSWORD'],
+        'HOST': 'db.bit.io',
+        'PORT': '5432'
     }
 }
 
