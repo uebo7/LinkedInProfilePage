@@ -5,7 +5,6 @@
 - HTML
 - Bootstrap
 - Django
-- Javascript
 - PostreSQL
 
 # Images
